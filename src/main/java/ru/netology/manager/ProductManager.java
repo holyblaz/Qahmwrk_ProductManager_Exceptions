@@ -7,7 +7,6 @@ import ru.netology.domain.Smartphone;
 
 public class ProductManager {
     private ProductRepository repository;
-    private Product[] items = new Product[0];
 
     public ProductManager(ProductRepository repository) {
         this.repository = repository;
@@ -26,25 +25,23 @@ public class ProductManager {
                 tmp[tmp.length - 1] = product;
                 result = tmp;
             }
-            items = result;
         }
         return result;
     }
 
-   /* public boolean matches(Product product, String search) {
-        if (product instanceof Book) {
-            Book book = (Book) product;
-            if (book.getName().contains(search) || book.getAuthor().contains(search))
-                return true;
-        }
-        if (product instanceof Smartphone) {
-            Smartphone smartphone = (Smartphone) product;
-            if (smartphone.getName().contains(search) || smartphone.getProducer().contains(search)) ;
-            return true;
-        }
-        return false;
-    }*/
-
+    /* public boolean matches(Product product, String search) {
+         if (product instanceof Book) {
+             Book book = (Book) product;
+             if (book.getName().contains(search) || book.getAuthor().contains(search))
+                 return true;
+         }
+         if (product instanceof Smartphone) {
+             Smartphone smartphone = (Smartphone) product;
+             if (smartphone.getName().contains(search) || smartphone.getProducer().contains(search)) ;
+             return true;
+         }
+         return false;
+     }*/
     public boolean matches(Product product, String search) {
         return product.getName().contains(search);
     }

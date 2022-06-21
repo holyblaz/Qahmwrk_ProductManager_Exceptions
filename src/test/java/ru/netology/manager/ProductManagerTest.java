@@ -69,17 +69,13 @@ class ProductManagerTest {
     }*/
 
     @Test
-    public void searchForNothing() {
-        assertArrayEquals(new Product[]{}, manager.searchBy(null));
+    public void searchInEmptyCollection() {
+        assertArrayEquals(new Product[]{}, manager.searchBy("Кит"));
     }
 
     @Test
-    public void searchNotExistSmartphone() {
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
-        manager.add(fifth);
-        assertArrayEquals(new Product[]{}, manager.searchBy("JG"));
+    public void searchForNothing() {
+        assertArrayEquals(new Product[]{}, manager.searchBy(null));
     }
 }
+
