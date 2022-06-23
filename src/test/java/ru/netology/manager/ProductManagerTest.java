@@ -31,13 +31,21 @@ class ProductManagerTest {
         assertArrayEquals(new Product[]{second}, manager.searchBy("Математика"));
     }
 
-
     @Test
     public void searchByNotFullNameBook() {
         manager.add(first);
         assertArrayEquals(new Product[]{first}, manager.searchBy("Истор"));
     }
+    @Test
+    public void addAllItemsAndFindBook() {
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
 
+        assertArrayEquals(new Product[]{third}, manager.searchBy("Английский"));
+    }
     /*@Test
     public void searchMatchesBookAuthor() {
         manager.add(third);

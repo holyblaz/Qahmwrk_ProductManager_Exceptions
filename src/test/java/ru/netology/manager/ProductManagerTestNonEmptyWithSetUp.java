@@ -53,11 +53,6 @@ public class ProductManagerTestNonEmptyWithSetUp {
         assertArrayEquals(new Product[]{}, manager.searchBy("Стол"));
     }
 
-
-    @Test
-    public void searchForNothing() {
-        assertArrayEquals(new Product[]{}, manager.searchBy(null));
-    }
 }
 
 
