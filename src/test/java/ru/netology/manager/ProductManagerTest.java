@@ -14,7 +14,7 @@ class ProductManagerTest {
     private ProductManager manager = new ProductManager(repository);
 
     Product first = new Book(1, "История", 500, "Антонов");
-    Product second = new Book(2, "Математика", 700, "Антонов");
+    Product second = new Book(2, "История России", 700, "Антонов");
     Product third = new Book(3, "Английский", 400, "Зайцева");
     Product fourth = new Smartphone(4, "Сиаоми", 1000, "Китай");
     Product fifth = new Smartphone(5, "Айфон", 1500, "Америка");
@@ -28,7 +28,7 @@ class ProductManagerTest {
     @Test
     public void searchByName() {
         manager.add(second);
-        assertArrayEquals(new Product[]{second}, manager.searchBy("Математика"));
+        assertArrayEquals(new Product[]{second}, manager.searchBy("История России"));
     }
 
     @Test
@@ -84,6 +84,22 @@ class ProductManagerTest {
     @Test
     public void searchForNothing() {
         assertArrayEquals(new Product[]{}, manager.searchBy(null));
+    }
+    @Test
+    public void searchForFewSameElements() {
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        assertArrayEquals(new Product[]{first, second}, manager.searchBy("История"));
+    }
+    @Test
+    public void searchInArrayForSimilarElement() {
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        assertArrayEquals(new Product[]{second}, manager.searchBy("России"));
     }
 }
 
