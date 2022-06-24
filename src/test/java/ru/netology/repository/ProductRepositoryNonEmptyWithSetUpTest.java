@@ -2,14 +2,13 @@ package ru.netology.repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 
-public class ProductRepositoryTestNonEmptyWithSetUp {
+public class ProductRepositoryNonEmptyWithSetUpTest {
 
     private ProductRepository repository = new ProductRepository();
 

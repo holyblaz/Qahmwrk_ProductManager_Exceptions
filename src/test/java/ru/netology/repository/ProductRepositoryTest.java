@@ -1,10 +1,16 @@
 package ru.netology.repository;
 
 import org.junit.jupiter.api.Assertions;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
+import ru.netology.exception.AlreadyExistsException;
+import ru.netology.exception.NotFoundException;
 
 class ProductRepositoryTest {
     private ProductRepository repository = new ProductRepository();
@@ -103,5 +109,33 @@ class ProductRepositoryTest {
         Product[] actual = repository.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldToRemoveByExistsID() {
+        repository.save(apex);
+        repository.save(xiaomi);
+        repository.save(first);
+        repository.save(second);
+
+        repository.removeById(1);
+
+        Assertions.assertArrayEquals(new Product[]{xiaomi, first, second}, repository.findAll());
+    }
+
+    @Test
+    public void shouldToRemoveNotExistsID() {
+        assertThrows(NotFoundException.class, () -> repository.removeById(6));
+    }
+
+    @Test
+    public void shouldSaveOneMoreItem() {
+        repository.save(apex);
+        Assertions.assertArrayEquals(new Product[]{apex}, repository.findAll());
+    }
+    @Test
+    public void shouldNotSaveItemThatAlreadyExist() {
+        repository.save(apex);
+        assertThrows(AlreadyExistsException.class, ()-> repository.save(apex));
     }
 }

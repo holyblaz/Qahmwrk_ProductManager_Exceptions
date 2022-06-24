@@ -9,7 +9,7 @@ import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
-public class ProductManagerTestNonEmptyWithSetUp {
+public class ProductManagerNonEmptyWithSetUpTest {
     private ProductRepository repository = new ProductRepository();
     private ProductManager manager = new ProductManager(repository);
 
